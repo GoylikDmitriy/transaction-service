@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  postgres-transactions:
+    build: postgres-transactions
+    restart: unless-stopped
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_DB=transactions
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234
+      - PGDATA=/data/postgres-transactions
+    volumes:
+      - ./postgres-transactions-data:/data/postgres-transactions
+
+  transaction-service:
+    build: .
+    restart: always
+    ports:
+      - '8080:8080'
+    depends_on:
+      - postgres-transaction-service
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-transactions:5432/transactions
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=1234

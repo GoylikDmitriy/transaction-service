@@ -1,0 +1,39 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-transactions
+      author: goylik
+      changes:
+        - createTable:
+            tableName: transactions
+            columns:
+              - column:
+                  name: transaction_id
+                  type: bigserial
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: account_number
+                  type: varchar
+                  constraints:
+                    nullable: false
+              - column:
+                  name: amount
+                  type: numeric(17,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: currency
+                  type: varchar(3)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: transaction_type
+                  type: varchar
+                  constraints:
+                    nullable: false
+              - column:
+                  name: transaction_date
+                  type: timestamp
+                  constraints:
+                    nullable: false

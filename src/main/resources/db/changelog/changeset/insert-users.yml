@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-users
+      author: goylik
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: name
+                  value: "Dmitry"
+              - column:
+                  name: doc_num
+                  value: "832819412AA9410"
+              - column:
+                  name: doc_type
+                  value: "PASSPORT"
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: name
+                  value: "Alex"
+              - column:
+                  name: doc_num
+                  value: "414124852395BA01"
+              - column:
+                  name: doc_type
+                  value: "PASSPORT"
